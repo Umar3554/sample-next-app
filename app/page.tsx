@@ -120,29 +120,31 @@ export default function ProductDashboard() {
   return (
     <div className="min-h-screen bg-background py-8">
       <div className="container mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="flex flex-col md:flex-row md:items-center md:justify-between mb-8 gap-4"
-        >
-          <div>
-            <h1 className="text-3xl md:text-4xl font-bold text-foreground">Product Dashboard</h1>
-            <p className="text-muted-foreground mt-1">Manage your products efficiently</p>
-          </div>
+       <motion.div
+  initial={{ opacity: 0, y: -20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.5 }}
+  className="flex flex-col md:flex-row md:items-center md:justify-between mb-8 gap-4 flex-wrap"
+>
+  <div className="w-full md:w-auto">
+    <h1 className="text-3xl md:text-4xl font-bold text-foreground">Product Dashboard</h1>
+    <p className="text-muted-foreground mt-1">Manage your products efficiently</p>
+  </div>
 
-          <div className="flex gap-3">
-            <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
-            <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-            <Button
-              onClick={openCreateForm}
-              className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 cursor-pointer"
-            >
-              <Plus className="h-4 w-4 mr-2" />
-              Add Product
-            </Button>
-          </div>
-        </motion.div>
+  <div className="flex flex-wrap gap-3 w-full md:w-auto">
+    <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
+    <div className="flex-grow min-w-[180px]">
+      <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+    </div>
+    <Button
+      onClick={openCreateForm}
+      className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 cursor-pointer whitespace-nowrap"
+    >
+      <Plus className="h-4 w-4 mr-2" />
+      Add Product
+    </Button>
+  </div>
+</motion.div>
 
         {filteredProducts.length === 0 ? (
           <EmptyState
